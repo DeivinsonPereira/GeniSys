@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -110,6 +112,16 @@ public class Tarefa implements Serializable{
 
 	public Set<Notificacao> getNotificacoes() {
 		return notificacoes;
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		dataInclusao = Instant.now();
+	}
+	
+	@PreUpdate
+	public void preUpdate() {
+		vencimento = Instant.now();
 	}
 
 	@Override
