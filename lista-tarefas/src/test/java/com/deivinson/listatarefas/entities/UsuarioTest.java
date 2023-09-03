@@ -18,8 +18,8 @@ public class UsuarioTest {
 	@Test
 	public void testSetAndGetId() {
 		
-		usuario.setId(1);
-		assertEquals(1, usuario.getId());
+		usuario.setId(1L);
+		assertEquals(1L, usuario.getId());
 	}
 	
 	@Test
