@@ -1,18 +1,34 @@
 package com.deivinson.listatarefas.entities;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario {
+public class Usuario implements Serializable{
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private Integer idade;
 	private String email;
+	
+	@OneToMany(mappedBy = "usuario")
+	private Set<Notificacao> mensagem = new HashSet<>();
+	
+	@OneToMany(mappedBy = "usuario")
+	private Set<Tarefa> tarefas = new HashSet<>();
 	
 	public Usuario() {
 	}
@@ -54,6 +70,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Set<Notificacao> getMensagem() {
+		return mensagem;
+	}
+
+	public Set<Tarefa> getTarefas() {
+		return tarefas;
 	}
 
 	@Override

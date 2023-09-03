@@ -1,21 +1,47 @@
 package com.deivinson.listatarefas.entities;
 
+import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_usuario")
-public class Tarefa {
+@Table(name = "tb_tarefa")
+public class Tarefa implements Serializable{
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;
+	
+	@Column(columnDefinition = "TEXT")
 	private String descricao;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dataInclusao;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant vencimento;
 	private boolean concluida;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "tarefa")
+	private Set<Notificacao> notificacoes = new HashSet<>();
 	
 	public Tarefa() {
 	}
@@ -76,6 +102,14 @@ public class Tarefa {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public Set<Notificacao> getNotificacoes() {
+		return notificacoes;
 	}
 
 	@Override
