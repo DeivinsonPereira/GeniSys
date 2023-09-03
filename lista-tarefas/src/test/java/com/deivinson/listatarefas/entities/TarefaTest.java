@@ -1,6 +1,7 @@
 package com.deivinson.listatarefas.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
@@ -21,8 +22,8 @@ public class TarefaTest {
 	@Test
 	public void testSetAndGetId() {
 		
-		tarefa.setId(1);
-		assertEquals(1, tarefa.getId());
+		tarefa.setId(1L);
+		assertEquals(1L, tarefa.getId());
 	}
 	
 	@Test
@@ -62,9 +63,9 @@ public class TarefaTest {
 	@Test
 	public void testEstaConcluida() {
 		
-		boolean tarefaConcluida = tarefa.SetConcluida(true);
+		tarefa.setConcluida(true);
 		
-		assertTrue(tarefaConcluida);
+		assertTrue(tarefa.isConcluida());
 	}
 	
 	@Test
@@ -72,8 +73,6 @@ public class TarefaTest {
 		
 		tarefa.setConcluida(false);
 		
-		boolean naoEstaConcluida = tarefa.isConcluida();
-		
-		assertFalse(naoEstaConcluida);
+		assertFalse(tarefa.isConcluida());
 	}
 }
