@@ -22,15 +22,15 @@ public class NotificacaoTest {
 	@Test
 	public void testSetAndGetId() {
 		
-		notificacao.setId(1);
-		assertEquals(1, notificacao.getId());
+		notificacao.setId(1L);
+		assertEquals(1L, notificacao.getId());
 	}
 	
 	@Test
 	public void testSetAndGetMensagem() {
 		
-		String esperado = notificacao.setMensagem("Falta concluir");
-		assertEquals(esperado, notificacao.getMensagem());
+		notificacao.setMensagem("Falta concluir");
+		assertEquals("Falta concluir", notificacao.getMensagem());
 	}
 	
 	@Test
@@ -40,15 +40,15 @@ public class NotificacaoTest {
 		
 		notificacao.setDataHora(instanteEsperado);
 		
-		assertEquals(instanteEsperado, notificacao.getMensagem());
+		assertEquals(instanteEsperado, notificacao.getDataHora());
 	}
 	
 	@Test
 	public void testNotificacaoExibida() {
 		
-		boolean notificacaoExibida = notificacao.setConcluida(true);
+		notificacao.setExibida(true);
 		
-		assertTrue(notificacaoExibida);
+		assertTrue(notificacao.isExibida());
 	}
 	
 	@Test
@@ -56,9 +56,7 @@ public class NotificacaoTest {
 		
 		notificacao.setExibida(false);
 		
-		boolean naoFoiExibida = notificacao.isExibida();
-		
-		assertFalse(naoFoiExibida);
+		assertFalse(notificacao.isExibida());
 	}
 	
 }
