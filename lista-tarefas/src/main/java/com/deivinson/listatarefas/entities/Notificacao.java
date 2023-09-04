@@ -35,16 +35,19 @@ public class Notificacao implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "tarefa_id")
-	private Tarefa tarefa;
+	private ListaTarefa listaTarefa;
 	
 	public Notificacao() {
 	}
 
-	public Notificacao(Long id, String mensagem, Instant dataHora, boolean exibida) {
+	public Notificacao(Long id, String mensagem, Instant dataHora, boolean exibida, Usuario usuario,
+			ListaTarefa listaTarefa) {
 		this.id = id;
 		this.mensagem = mensagem;
 		this.dataHora = dataHora;
 		this.exibida = exibida;
+		this.usuario = usuario;
+		this.listaTarefa = listaTarefa;
 	}
 
 	public Long getId() {
@@ -83,8 +86,8 @@ public class Notificacao implements Serializable{
 		return usuario;
 	}
 
-	public Tarefa getTarefa() {
-		return tarefa;
+	public ListaTarefa getListaTarefa() {
+		return listaTarefa;
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class Usuario implements Serializable{
 	private Set<Notificacao> mensagem = new HashSet<>();
 	
 	@OneToMany(mappedBy = "usuario")
-	private Set<Tarefa> tarefas = new HashSet<>();
+	private Set<Tarefa> listaTarefas = new HashSet<>();
 	
 	public Usuario() {
 	}
@@ -76,8 +76,8 @@ public class Usuario implements Serializable{
 		return mensagem;
 	}
 
-	public Set<Tarefa> getTarefas() {
-		return tarefas;
+	public Set<Tarefa> getListaTarefas() {
+		return listaTarefas;
 	}
 
 	@Override

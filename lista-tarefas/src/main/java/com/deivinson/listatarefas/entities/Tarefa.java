@@ -1,10 +1,9 @@
 package com.deivinson.listatarefas.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -26,35 +22,24 @@ public class Tarefa implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String titulo;
+	private String nome;
 	
 	@Column(columnDefinition = "TEXT")
 	private String descricao;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant dataInclusao;
-	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant vencimento;
 	private boolean concluida;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
-	
-	@OneToMany(mappedBy = "tarefa")
-	private Set<Notificacao> notificacoes = new HashSet<>();
+	@JoinColumn(name = "lista_tarefa_id")
+	private List<ListaTarefa> listaTarefa = new ArrayList<>();
 	
 	public Tarefa() {
 	}
 	
-	public Tarefa(Long id, String titulo, String descricao, Instant dataInclusao, Instant vencimento,
-			boolean concluida) {
+	public Tarefa(Long id, String nome, String descricao, boolean concluida) {
 		this.id = id;
-		this.titulo = titulo;
+		this.nome = nome;
 		this.descricao = descricao;
-		this.dataInclusao = dataInclusao;
-		this.vencimento = vencimento;
 		this.concluida = concluida;
 	}
 
@@ -65,6 +50,18 @@ public class Tarefa implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<ListaTarefa> getListaTarefa() {
+		return listaTarefa;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -74,54 +71,12 @@ public class Tarefa implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public Instant getDataInclusao() {
-		return dataInclusao;
-	}
-
-	public void setDataInclusao(Instant dataInclusao) {
-		this.dataInclusao = dataInclusao;
-	}
-
-	public Instant getVencimento() {
-		return vencimento;
-	}
-
-	public void setVencimento(Instant vencimento) {
-		this.vencimento = vencimento;
-	}
-
 	public boolean isConcluida() {
 		return concluida;
 	}
 
 	public void setConcluida(boolean concluida) {
 		this.concluida = concluida;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public Set<Notificacao> getNotificacoes() {
-		return notificacoes;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		dataInclusao = Instant.now();
-	}
-	
-	@PreUpdate
-	public void preUpdate() {
-		vencimento = Instant.now();
 	}
 
 	@Override
