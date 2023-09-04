@@ -34,7 +34,7 @@ public class Notificacao implements Serializable{
 	private Usuario usuario;
 	
 	@ManyToOne
-	@JoinColumn(name = "tarefa_id")
+	@JoinColumn(name = "lista_tarefa_id")
 	private ListaTarefa listaTarefa;
 	
 	public Notificacao() {

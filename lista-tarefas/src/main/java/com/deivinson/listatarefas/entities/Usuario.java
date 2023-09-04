@@ -1,7 +1,9 @@
 package com.deivinson.listatarefas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,7 +30,7 @@ public class Usuario implements Serializable{
 	private Set<Notificacao> mensagem = new HashSet<>();
 	
 	@OneToMany(mappedBy = "usuario")
-	private Set<Tarefa> listaTarefas = new HashSet<>();
+	private List<ListaTarefa> listaTarefas = new ArrayList<>();
 	
 	public Usuario() {
 	}
@@ -76,7 +78,7 @@ public class Usuario implements Serializable{
 		return mensagem;
 	}
 
-	public Set<Tarefa> getListaTarefas() {
+	public List<ListaTarefa> getListaTarefas() {
 		return listaTarefas;
 	}
 

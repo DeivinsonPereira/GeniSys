@@ -1,8 +1,6 @@
 package com.deivinson.listatarefas.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -31,7 +29,7 @@ public class Tarefa implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "lista_tarefa_id")
-	private List<ListaTarefa> listaTarefa = new ArrayList<>();
+	private ListaTarefa listaTarefa;
 	
 	public Tarefa() {
 	}
@@ -59,8 +57,12 @@ public class Tarefa implements Serializable{
 		this.nome = nome;
 	}
 
-	public List<ListaTarefa> getListaTarefa() {
+	public ListaTarefa getListaTarefa() {
 		return listaTarefa;
+	}
+
+	public void setListaTarefa(ListaTarefa listaTarefa) {
+		this.listaTarefa = listaTarefa;
 	}
 
 	public String getDescricao() {
