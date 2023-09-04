@@ -34,11 +34,12 @@ public class Tarefa implements Serializable{
 	public Tarefa() {
 	}
 	
-	public Tarefa(Long id, String nome, String descricao, boolean concluida) {
+	public Tarefa(Long id, String nome, String descricao, boolean concluida, ListaTarefa listaTarefa) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.concluida = concluida;
+		this.listaTarefa = listaTarefa;
 	}
 
 	public Long getId() {
@@ -64,7 +65,7 @@ public class Tarefa implements Serializable{
 	public void setListaTarefa(ListaTarefa listaTarefa) {
 		this.listaTarefa = listaTarefa;
 	}
-
+	
 	public String getDescricao() {
 		return descricao;
 	}
