@@ -3,19 +3,19 @@ package com.deivinson.listatarefas.dto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
+
+import java.time.Instant;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.deivinson.listatarefas.entities.ListaTarefa;
 import com.deivinson.listatarefas.entities.Tarefa;
+import com.deivinson.listatarefas.entities.Usuario;
 
 public class TarefaDTOTest {
 
 	private TarefaDTO tarefaDTO;
-	
-	private ListaTarefa	listaTarefa;
 	
 	@BeforeEach
 	public void setUp() {
@@ -40,8 +40,8 @@ public class TarefaDTOTest {
 	@Test
 	public void testSetAndGetDescricao() {
 		
-		TarefaDTO desc = tarefaDTO.setDescricao("Testando o set e get de descricao");
-		assertEquals(desc, tarefaDTO.getDescricao());
+		tarefaDTO.setDescricao("Testando o set e get de descricao");
+		assertEquals("Testando o set e get de descricao", tarefaDTO.getDescricao());
 	}
 	
 	@Test
@@ -63,14 +63,16 @@ public class TarefaDTOTest {
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		Tarefa lista = new Tarefa (1L, "Provas","Estudar para prova",false, new ListaTarefa(any(),"Teste",any(),any(),any(),any()));
+		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(), Instant.now(), false, new Usuario(1L, "João", 30, "joão@gmail.com"));
 		
-		TarefaDTO listaTarefaDTO = new TarefaDTO(lista);
+		Tarefa lista = new Tarefa (1L, "Provas","Estudar para prova",false, listaTarefa);
 		
-		assertEquals(listaTarefaDTO.getId(), lista.getId());
-		assertEquals(listaTarefaDTO.getNome(), lista.getNome());
-		assertEquals(listaTarefaDTO.getDescricao(), lista.getDescricao());
-		assertEquals(listaTarefaDTO.isConcluida(), lista.isConcluida());
-		assertEquals(listaTarefaDTO.getListaTarefa().getTitulo(), lista.getListaTarefa().getTitulo());
+		TarefaDTO tarefaDTO = new TarefaDTO(lista);
+		
+		assertEquals(tarefaDTO.getId(), lista.getId());
+		assertEquals(tarefaDTO.getNome(), lista.getNome());
+		assertEquals(tarefaDTO.getDescricao(), lista.getDescricao());
+		assertEquals(tarefaDTO.isConcluida(), lista.isConcluida());
+		assertEquals(tarefaDTO.getListaTarefaDTO().getTitulo(), lista.getListaTarefa().getTitulo());
 	}
 }
