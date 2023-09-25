@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.Usuario;
+import com.deivinson.listatarefas.entities.User;
 
-public class UsuarioDTOTest {
+public class UserDTOTest {
 
-	private UsuarioDTO usuarioDTO;
+	private UserDTO usuarioDTO;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		usuarioDTO = new UsuarioDTO();
+		usuarioDTO = new UserDTO();
 	}
 	
 	@Test
@@ -41,9 +41,9 @@ public class UsuarioDTOTest {
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		Usuario usuario = new Usuario (1L, "João", 30, "joao@gmail.com");
+		User usuario = new User (1L, "João", 30, "joao@gmail.com");
 		
-		UsuarioDTO usuarioDTO = new UsuarioDTO(usuario);
+		UserDTO usuarioDTO = new UserDTO(usuario);
 		
 		assertEquals(usuario.getId(), usuarioDTO.getId());
 		assertEquals(usuario.getNome(), usuarioDTO.getNome());
@@ -53,7 +53,7 @@ public class UsuarioDTOTest {
 	@Test
 	public void ConstructorWithArguments() {
 		
-		UsuarioDTO usuarioDTO = new UsuarioDTO(1L, "João", "joao@gmail.com");
+		UserDTO usuarioDTO = new UserDTO(1L, "João", "joao@gmail.com");
 		
 		assertEquals(1L, usuarioDTO.getId());
 		assertEquals("João", usuarioDTO.getNome());

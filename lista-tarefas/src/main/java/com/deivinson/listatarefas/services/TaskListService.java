@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.deivinson.listatarefas.dto.TaskListDTO;
 import com.deivinson.listatarefas.entities.TaskList;
-import com.deivinson.listatarefas.entities.Usuario;
-import com.deivinson.listatarefas.repositories.ListaTarefaRepository;
-import com.deivinson.listatarefas.repositories.UsuarioRepository;
+import com.deivinson.listatarefas.entities.User;
+import com.deivinson.listatarefas.repositories.TaskListRepository;
+import com.deivinson.listatarefas.repositories.UserRepository;
 
-public class ListaTarefaService {
+public class TaskListService {
 
 	@Autowired
-	private ListaTarefaRepository repository;
+	private TaskListRepository repository;
 	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UserRepository usuarioRepository;
 	
 	public TaskListDTO insertTask(TaskListDTO dto) {
 		
 		TaskList taskList = new TaskList();
 		taskList.setTitulo(dto.getTitulo());
 		taskList.setVencimento(dto.getVencimento());
-		Usuario usuario = usuarioRepository.findById(dto.getId())
+		User usuario = usuarioRepository.findById(dto.getId())
 	            .orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
 		taskList.setUsuario(usuario);
 

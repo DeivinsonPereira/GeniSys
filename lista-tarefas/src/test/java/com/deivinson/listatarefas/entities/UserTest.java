@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class UsuarioTest {
+public class UserTest {
 
-	private Usuario usuario;
+	private User usuario;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		usuario = new Usuario();
+		usuario = new User();
 	}
 	
 	@Test

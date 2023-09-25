@@ -11,17 +11,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.deivinson.listatarefas.entities.TaskList;
-import com.deivinson.listatarefas.entities.Tarefa;
-import com.deivinson.listatarefas.entities.Usuario;
+import com.deivinson.listatarefas.entities.Task;
+import com.deivinson.listatarefas.entities.User;
 
-public class TarefaDTOTest {
+public class TaskDTOTest {
 
-	private TarefaDTO tarefaDTO;
+	private TaskDTO tarefaDTO;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		tarefaDTO = new TarefaDTO();
+		tarefaDTO = new TaskDTO();
 	}
 	
 	@Test
@@ -64,11 +64,11 @@ public class TarefaDTOTest {
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(),new Usuario(1L, "João", 30, "joão@gmail.com"));
+		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(),new User(1L, "João", 30, "joão@gmail.com"));
 		
-		Tarefa lista = new Tarefa (1L, "Provas","Estudar para prova",false, listaTarefa);
+		Task lista = new Task (1L, "Provas","Estudar para prova",false, listaTarefa);
 		
-		TarefaDTO tarefaDTO = new TarefaDTO(lista);
+		TaskDTO tarefaDTO = new TaskDTO(lista);
 		
 		assertEquals(tarefaDTO.getId(), lista.getId());
 		assertEquals(tarefaDTO.getNome(), lista.getNome());
@@ -82,7 +82,7 @@ public class TarefaDTOTest {
 		
 		TaskListDTO listaTarefaDTO = new TaskListDTO();
 		
-		TarefaDTO tarefaDTO = new TarefaDTO(1L, "Mercado", "Fazer as compras", false, listaTarefaDTO );
+		TaskDTO tarefaDTO = new TaskDTO(1L, "Mercado", "Fazer as compras", false, listaTarefaDTO );
 		
 		assertNotNull(tarefaDTO);
 		assertTrue(tarefaDTO.getId() == 1L);
@@ -93,7 +93,7 @@ public class TarefaDTOTest {
 		
 		TaskListDTO listaTarefaDTO = new TaskListDTO();
 		
-		TarefaDTO tarefaDTO = new TarefaDTO();
+		TaskDTO tarefaDTO = new TaskDTO();
 		tarefaDTO.setId(1L);
 		tarefaDTO.setNome("Mercado");
 		tarefaDTO.setDescricao("Fazer as compras");

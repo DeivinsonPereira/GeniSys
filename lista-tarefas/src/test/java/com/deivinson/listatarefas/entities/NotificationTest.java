@@ -9,14 +9,14 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class NotificacaoTest {
+public class NotificationTest {
 	
-	private Notificacao notificacao;
+	private Notification notificacao;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		notificacao = new Notificacao();
+		notificacao = new Notification();
 	}
 	
 	@Test

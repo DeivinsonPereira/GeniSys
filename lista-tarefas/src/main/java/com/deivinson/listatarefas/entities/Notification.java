@@ -25,7 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_notificacao")
-public class Notificacao implements Serializable{
+public class Notification implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -41,7 +41,7 @@ public class Notificacao implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	private User usuario;
 	
 	@ManyToOne
 	@JoinColumn(name = "lista_tarefa_id")

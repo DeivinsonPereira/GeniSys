@@ -10,13 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.deivinson.listatarefas.entities.TaskList;
-import com.deivinson.listatarefas.entities.Usuario;
+import com.deivinson.listatarefas.entities.User;
 
 public class TaskListDTOTest {
 
 	private TaskListDTO listaTarefaDTO;
 	
-	private Usuario usuario;
+	private User usuario;
 	
 	@BeforeEach
 	public void setUp() {
@@ -72,7 +72,7 @@ public class TaskListDTOTest {
 	public void testEntityToDTOConversion() {
 		
 		
-		usuario = new Usuario(1L, "Joelson", 30, "joelson@gmail.com");
+		usuario = new User(1L, "Joelson", 30, "joelson@gmail.com");
 		
 		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(), usuario);
 		
@@ -88,7 +88,7 @@ public class TaskListDTOTest {
 	@Test
 	public void constructorWithAllArguments() {
 		
-		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		UserDTO usuarioDTO = new UserDTO();
 		usuarioDTO.setNome("João");
 		
 		TaskListDTO listaTarefaDTO = new TaskListDTO(1L, "Mercado",  Instant.now(), usuarioDTO);
@@ -105,7 +105,7 @@ public class TaskListDTOTest {
 	@Test
 	public void testSetter() {
 		
-		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		UserDTO usuarioDTO = new UserDTO();
 		usuarioDTO.setNome("João");
 		
 		TaskListDTO listaTarefaDTO = new TaskListDTO();

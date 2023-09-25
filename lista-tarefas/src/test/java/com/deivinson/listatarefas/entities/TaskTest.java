@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TarefaTest {
+public class TaskTest {
 
-	private Tarefa tarefa;
+	private Task tarefa;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		tarefa = new Tarefa();
+		tarefa = new Task();
 	}
 	
 	@Test

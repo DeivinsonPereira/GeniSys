@@ -44,16 +44,16 @@ public class TaskList {
 	private boolean concluida;
 	
 	@OneToMany(mappedBy = "listaTarefa")
-	private Set<Notificacao> notificacoes = new HashSet<>();
+	private Set<Notification> notificacoes = new HashSet<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	private User usuario;
 	
 	@OneToMany(mappedBy = "listaTarefa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Tarefa> tarefas = new ArrayList<>();
+	private List<Task> tarefas = new ArrayList<>();
 	
-	public TaskList(Long id, String titulo, Instant vencimento, Usuario usuario) {
+	public TaskList(Long id, String titulo, Instant vencimento, User usuario) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataInclusao = Instant.now();
@@ -63,10 +63,10 @@ public class TaskList {
 	}
 	
 	@SuppressWarnings("unused")
-	private void setMensagem(List<Notificacao> notificacoes) {}
+	private void setMensagem(List<Notification> notificacoes) {}
 	
 	@SuppressWarnings("unused")
-	private void setListaTarefas(List<Tarefa> tarefas) {}
+	private void setListaTarefas(List<Task> tarefas) {}
 	
 	@SuppressWarnings("unused")
 	private void setDataInclusao(Instant dataInclusao) {}

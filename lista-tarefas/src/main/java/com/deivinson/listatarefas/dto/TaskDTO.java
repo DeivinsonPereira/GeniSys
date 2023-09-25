@@ -1,6 +1,6 @@
 package com.deivinson.listatarefas.dto;
 
-import com.deivinson.listatarefas.entities.Tarefa;
+import com.deivinson.listatarefas.entities.Task;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TarefaDTO {
+public class TaskDTO {
 
 	private Long id;
 	private String nome;
@@ -19,7 +19,7 @@ public class TarefaDTO {
 	private TaskListDTO listaTarefaDTO;
 
 
-	public TarefaDTO(Long id, String nome, String descricao, boolean concluida, TaskListDTO listaTarefa) {
+	public TaskDTO(Long id, String nome, String descricao, boolean concluida, TaskListDTO listaTarefa) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -27,7 +27,7 @@ public class TarefaDTO {
 		this.listaTarefaDTO = listaTarefa;
 	}
 	
-	public TarefaDTO(Tarefa entity) {
+	public TaskDTO(Task entity) {
 		this.id = entity.getId();
 		this.nome = entity.getNome();
 		this.descricao = entity.getDescricao();

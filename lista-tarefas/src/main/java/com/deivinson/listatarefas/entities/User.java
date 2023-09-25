@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Table(name = "tb_usuario")
-public class Usuario implements Serializable{
+public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,12 +35,12 @@ public class Usuario implements Serializable{
 	private String email;
 	
 	@OneToMany(mappedBy = "usuario")
-	private Set<Notificacao> mensagem = new HashSet<>();
+	private Set<Notification> mensagem = new HashSet<>();
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<TaskList> listaTarefas = new ArrayList<>();
 	
-	public Usuario(Long id, String nome, Integer idade, String email) {
+	public User(Long id, String nome, Integer idade, String email) {
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
@@ -48,7 +48,7 @@ public class Usuario implements Serializable{
 	}
 
 	@SuppressWarnings("unused")
-	private void setMensagem(List<Notificacao> mensagem) {}
+	private void setMensagem(List<Notification> mensagem) {}
 	
 	@SuppressWarnings("unused")
 	private void setListaTarefas(List<TaskList> listaTarefas) {}

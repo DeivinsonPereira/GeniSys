@@ -19,9 +19,9 @@ public class TaskListDTO {
 	private Instant vencimento;
 	private boolean concluida;
 	
-	private UsuarioDTO usuarioDto;
+	private UserDTO usuarioDto;
 	
-	public TaskListDTO(Long id, String titulo, Instant vencimento, UsuarioDTO usuarioDto) {
+	public TaskListDTO(Long id, String titulo, Instant vencimento, UserDTO usuarioDto) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataInclusao = Instant.now();
@@ -36,7 +36,7 @@ public class TaskListDTO {
 		this.dataInclusao = entity.getDataInclusao();
 		this.vencimento = entity.getVencimento();
 		this.concluida = entity.isConcluida();
-		this.usuarioDto = new UsuarioDTO(entity.getUsuario());
+		this.usuarioDto = new UserDTO(entity.getUsuario());
 		
 	}
 
