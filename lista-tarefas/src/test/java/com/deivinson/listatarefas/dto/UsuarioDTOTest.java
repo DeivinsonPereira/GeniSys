@@ -50,5 +50,14 @@ public class UsuarioDTOTest {
 		assertEquals(usuario.getEmail(), usuarioDTO.getEmail());
 	}
 	
+	@Test
+	public void ConstructorWithArguments() {
+		
+		UsuarioDTO usuarioDTO = new UsuarioDTO(1L, "João", "joao@gmail.com");
+		
+		assertEquals(1L, usuarioDTO.getId());
+		assertEquals("João", usuarioDTO.getNome());
+		assertEquals("joao@gmail.com", usuarioDTO.getEmail());
+	}
 	
 }

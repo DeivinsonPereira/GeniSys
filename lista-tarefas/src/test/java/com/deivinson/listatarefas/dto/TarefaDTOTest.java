@@ -2,6 +2,7 @@ package com.deivinson.listatarefas.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
@@ -74,5 +75,32 @@ public class TarefaDTOTest {
 		assertEquals(tarefaDTO.getDescricao(), lista.getDescricao());
 		assertEquals(tarefaDTO.isConcluida(), lista.isConcluida());
 		assertEquals(tarefaDTO.getListaTarefaDTO().getTitulo(), lista.getListaTarefa().getTitulo());
+	}
+	
+	@Test
+	public void ConstructorWithArguments() {
+		
+		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		
+		TarefaDTO tarefaDTO = new TarefaDTO(1L, "Mercado", "Fazer as compras", false, listaTarefaDTO );
+		
+		assertNotNull(tarefaDTO);
+		assertTrue(tarefaDTO.getId() == 1L);
+	}
+	
+	@Test
+	public void testSetters() {
+		
+		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		
+		TarefaDTO tarefaDTO = new TarefaDTO();
+		tarefaDTO.setId(1L);
+		tarefaDTO.setNome("Mercado");
+		tarefaDTO.setDescricao("Fazer as compras");
+		tarefaDTO.setConcluida(false);
+		tarefaDTO.setListaTarefaDTO(listaTarefaDTO);
+		
+		assertNotNull(tarefaDTO);
+		assertTrue(tarefaDTO.getId() == 1L);
 	}
 }

@@ -84,5 +84,38 @@ public class ListaTarefaDTOTest {
 		assertEquals(listatarefaDTO.isConcluida(), listaTarefa.isConcluida());
 		assertEquals(listatarefaDTO.getUsuarioDto().getNome(), listaTarefa.getUsuario().getNome());
 	}
+	
+	@Test
+	public void constructorWithAllArguments() {
+		
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		usuarioDTO.setNome("João");
+		
+		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO(1L, "Mercado", Instant.now(), Instant.now(), false, usuarioDTO);
+		
+		assertEquals(1L, listaTarefaDTO.getId());
+		assertEquals("Mercado", listaTarefaDTO.getTitulo());
+		assertEquals(Instant.now(), listaTarefaDTO.getDataInclusao());
+		assertEquals(Instant.now(), listaTarefaDTO.getVencimento());
+		assertFalse(listaTarefaDTO.isConcluida() == true);
+		assertEquals(usuarioDTO.getNome(), listaTarefaDTO.getUsuarioDto().getNome() );
+		
+	}
+	
+	@Test
+	public void testSetter() {
+		
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		usuarioDTO.setNome("João");
+		
+		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		listaTarefaDTO.setId(1L);
+		listaTarefaDTO.setTitulo("Mercado");
+		listaTarefaDTO.setUsuarioDto(usuarioDTO);
+		
+		assertEquals(1L, listaTarefaDTO.getId());
+		assertEquals("Mercado", listaTarefaDTO.getTitulo());
+		assertEquals(usuarioDTO.getNome(), listaTarefaDTO.getUsuarioDto().getNome() );
+	}
 
 }

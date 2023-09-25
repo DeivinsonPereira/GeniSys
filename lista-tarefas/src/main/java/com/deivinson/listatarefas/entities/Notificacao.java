@@ -2,7 +2,6 @@ package com.deivinson.listatarefas.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_notificacao")
 public class Notificacao implements Serializable{
@@ -37,74 +47,5 @@ public class Notificacao implements Serializable{
 	@JoinColumn(name = "lista_tarefa_id")
 	private ListaTarefa listaTarefa;
 	
-	public Notificacao() {
-	}
-
-	public Notificacao(Long id, String mensagem, Instant dataHora, boolean exibida, Usuario usuario,
-			ListaTarefa listaTarefa) {
-		this.id = id;
-		this.mensagem = mensagem;
-		this.dataHora = dataHora;
-		this.exibida = exibida;
-		this.usuario = usuario;
-		this.listaTarefa = listaTarefa;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getMensagem() {
-		return mensagem;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
-
-	public Instant getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(Instant dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public boolean isExibida() {
-		return exibida;
-	}
-
-	public void setExibida(boolean exibida) {
-		this.exibida = exibida;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public ListaTarefa getListaTarefa() {
-		return listaTarefa;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Notificacao other = (Notificacao) obj;
-		return Objects.equals(id, other.id);
-	}
 	
 }

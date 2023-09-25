@@ -4,7 +4,6 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,6 +18,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_lista_tarefa")
 public class ListaTarefa {
@@ -45,10 +53,6 @@ public class ListaTarefa {
 	@OneToMany(mappedBy = "listaTarefa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
-	
-	public ListaTarefa() {
-	}
-
 	public ListaTarefa(Long id, String titulo, Instant dataInclusao, Instant vencimento, boolean concluida,
 			Usuario usuario) {
 		this.id = id;
@@ -58,78 +62,11 @@ public class ListaTarefa {
 		this.concluida = concluida;
 		this.usuario = usuario;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public Instant getDataInclusao() {
-		return dataInclusao;
-	}
-
-	public void setDataInclusao(Instant dataInclusao) {
-		this.dataInclusao = dataInclusao;
-	}
-
-	public Instant getVencimento() {
-		return vencimento;
-	}
-
-	public void setVencimento(Instant vencimento) {
-		this.vencimento = vencimento;
-	}
-
-	public boolean isConcluida() {
-		return concluida;
-	}
-
-	public void setConcluida(boolean concluida) {
-		this.concluida = concluida;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Set<Notificacao> getNotificacoes() {
-		return notificacoes;
-	}
-
-	public List<Tarefa> getTarefas() {
-		return tarefas;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ListaTarefa other = (ListaTarefa) obj;
-		return Objects.equals(id, other.id);
-	}
 	
+	@SuppressWarnings("unused")
+	private void setMensagem(List<Notificacao> notificacoes) {}
+	
+	@SuppressWarnings("unused")
+	private void setListaTarefas(List<Tarefa> tarefas) {}
+
 }
