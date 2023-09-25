@@ -34,16 +34,6 @@ public class ListaTarefaTest {
 	}
 
 	@Test
-	public void testSetAndGetDataInclusao() {
-		
-		Instant instanteEsperado = Instant.now();
-		
-		listaTarefa.setDataInclusao(instanteEsperado);
-		
-		assertEquals(instanteEsperado, listaTarefa.getDataInclusao());
-	}
-	
-	@Test
 	public void testSetAndGetVencimento() {
 		
 		Instant instanteEsperado = Instant.now();

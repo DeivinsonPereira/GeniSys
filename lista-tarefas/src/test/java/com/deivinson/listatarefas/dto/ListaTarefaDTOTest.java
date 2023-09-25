@@ -74,7 +74,7 @@ public class ListaTarefaDTOTest {
 		
 		usuario = new Usuario(1L, "Joelson", 30, "joelson@gmail.com");
 		
-		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(), Instant.now(), false, usuario);
+		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(), usuario);
 		
 		ListaTarefaDTO listatarefaDTO = new ListaTarefaDTO(listaTarefa);
 		
@@ -91,7 +91,7 @@ public class ListaTarefaDTOTest {
 		UsuarioDTO usuarioDTO = new UsuarioDTO();
 		usuarioDTO.setNome("João");
 		
-		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO(1L, "Mercado", Instant.now(), Instant.now(), false, usuarioDTO);
+		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO(1L, "Mercado",  Instant.now(), usuarioDTO);
 		
 		assertEquals(1L, listaTarefaDTO.getId());
 		assertEquals("Mercado", listaTarefaDTO.getTitulo());

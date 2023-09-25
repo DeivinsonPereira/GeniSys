@@ -64,7 +64,7 @@ public class TarefaDTOTest {
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(), Instant.now(), false, new Usuario(1L, "João", 30, "joão@gmail.com"));
+		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(),new Usuario(1L, "João", 30, "joão@gmail.com"));
 		
 		Tarefa lista = new Tarefa (1L, "Provas","Estudar para prova",false, listaTarefa);
 		

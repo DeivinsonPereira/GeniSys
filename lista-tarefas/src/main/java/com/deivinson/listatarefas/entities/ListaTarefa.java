@@ -53,13 +53,12 @@ public class ListaTarefa {
 	@OneToMany(mappedBy = "listaTarefa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
-	public ListaTarefa(Long id, String titulo, Instant dataInclusao, Instant vencimento, boolean concluida,
-			Usuario usuario) {
+	public ListaTarefa(Long id, String titulo, Instant vencimento, Usuario usuario) {
 		this.id = id;
 		this.titulo = titulo;
-		this.dataInclusao = dataInclusao;
+		this.dataInclusao = Instant.now();
 		this.vencimento = vencimento;
-		this.concluida = concluida;
+		this.concluida = false;
 		this.usuario = usuario;
 	}
 	
@@ -68,5 +67,8 @@ public class ListaTarefa {
 	
 	@SuppressWarnings("unused")
 	private void setListaTarefas(List<Tarefa> tarefas) {}
+	
+	@SuppressWarnings("unused")
+	private void setDataInclusao(Instant dataInclusao) {}
 
 }
