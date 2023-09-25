@@ -29,7 +29,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_lista_tarefa")
-public class ListaTarefa {
+public class TaskList {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,7 +53,7 @@ public class ListaTarefa {
 	@OneToMany(mappedBy = "listaTarefa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
-	public ListaTarefa(Long id, String titulo, Instant vencimento, Usuario usuario) {
+	public TaskList(Long id, String titulo, Instant vencimento, Usuario usuario) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataInclusao = Instant.now();

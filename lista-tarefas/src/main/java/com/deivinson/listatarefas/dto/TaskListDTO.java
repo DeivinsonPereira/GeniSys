@@ -2,7 +2,7 @@ package com.deivinson.listatarefas.dto;
 
 import java.time.Instant;
 
-import com.deivinson.listatarefas.entities.ListaTarefa;
+import com.deivinson.listatarefas.entities.TaskList;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ListaTarefaDTO {
+public class TaskListDTO {
 
 	private Long id;
 	private String titulo;
@@ -21,7 +21,7 @@ public class ListaTarefaDTO {
 	
 	private UsuarioDTO usuarioDto;
 	
-	public ListaTarefaDTO(Long id, String titulo, Instant vencimento, UsuarioDTO usuarioDto) {
+	public TaskListDTO(Long id, String titulo, Instant vencimento, UsuarioDTO usuarioDto) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataInclusao = Instant.now();
@@ -30,7 +30,7 @@ public class ListaTarefaDTO {
 		this.usuarioDto = usuarioDto;
 	}
 	
-	public ListaTarefaDTO(ListaTarefa entity) {
+	public TaskListDTO(TaskList entity) {
 		this.id = entity.getId();
 		this.titulo = entity.getTitulo();
 		this.dataInclusao = entity.getDataInclusao();

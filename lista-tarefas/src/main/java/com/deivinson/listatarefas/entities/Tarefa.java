@@ -39,6 +39,6 @@ public class Tarefa implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "lista_tarefa_id")
-	private ListaTarefa listaTarefa;
+	private TaskList listaTarefa;
 	
 }

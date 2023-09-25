@@ -10,7 +10,7 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.ListaTarefa;
+import com.deivinson.listatarefas.entities.TaskList;
 import com.deivinson.listatarefas.entities.Tarefa;
 import com.deivinson.listatarefas.entities.Usuario;
 
@@ -64,7 +64,7 @@ public class TarefaDTOTest {
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(),new Usuario(1L, "João", 30, "joão@gmail.com"));
+		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(),new Usuario(1L, "João", 30, "joão@gmail.com"));
 		
 		Tarefa lista = new Tarefa (1L, "Provas","Estudar para prova",false, listaTarefa);
 		
@@ -80,7 +80,7 @@ public class TarefaDTOTest {
 	@Test
 	public void ConstructorWithArguments() {
 		
-		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		TaskListDTO listaTarefaDTO = new TaskListDTO();
 		
 		TarefaDTO tarefaDTO = new TarefaDTO(1L, "Mercado", "Fazer as compras", false, listaTarefaDTO );
 		
@@ -91,7 +91,7 @@ public class TarefaDTOTest {
 	@Test
 	public void testSetters() {
 		
-		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		TaskListDTO listaTarefaDTO = new TaskListDTO();
 		
 		TarefaDTO tarefaDTO = new TarefaDTO();
 		tarefaDTO.setId(1L);

@@ -9,19 +9,19 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.ListaTarefa;
+import com.deivinson.listatarefas.entities.TaskList;
 import com.deivinson.listatarefas.entities.Usuario;
 
-public class ListaTarefaDTOTest {
+public class TaskListDTOTest {
 
-	private ListaTarefaDTO listaTarefaDTO;
+	private TaskListDTO listaTarefaDTO;
 	
 	private Usuario usuario;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		listaTarefaDTO = new ListaTarefaDTO();
+		listaTarefaDTO = new TaskListDTO();
 	}
 	
 	@Test
@@ -74,9 +74,9 @@ public class ListaTarefaDTOTest {
 		
 		usuario = new Usuario(1L, "Joelson", 30, "joelson@gmail.com");
 		
-		ListaTarefa listaTarefa = new ListaTarefa(1L, "Teste", Instant.now(), usuario);
+		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(), usuario);
 		
-		ListaTarefaDTO listatarefaDTO = new ListaTarefaDTO(listaTarefa);
+		TaskListDTO listatarefaDTO = new TaskListDTO(listaTarefa);
 		
 		assertEquals(listatarefaDTO.getId(), listaTarefa.getId());
 		assertEquals(listatarefaDTO.getTitulo(), listaTarefa.getTitulo());
@@ -91,7 +91,7 @@ public class ListaTarefaDTOTest {
 		UsuarioDTO usuarioDTO = new UsuarioDTO();
 		usuarioDTO.setNome("João");
 		
-		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO(1L, "Mercado",  Instant.now(), usuarioDTO);
+		TaskListDTO listaTarefaDTO = new TaskListDTO(1L, "Mercado",  Instant.now(), usuarioDTO);
 		
 		assertEquals(1L, listaTarefaDTO.getId());
 		assertEquals("Mercado", listaTarefaDTO.getTitulo());
@@ -108,7 +108,7 @@ public class ListaTarefaDTOTest {
 		UsuarioDTO usuarioDTO = new UsuarioDTO();
 		usuarioDTO.setNome("João");
 		
-		ListaTarefaDTO listaTarefaDTO = new ListaTarefaDTO();
+		TaskListDTO listaTarefaDTO = new TaskListDTO();
 		listaTarefaDTO.setId(1L);
 		listaTarefaDTO.setTitulo("Mercado");
 		listaTarefaDTO.setUsuarioDto(usuarioDTO);

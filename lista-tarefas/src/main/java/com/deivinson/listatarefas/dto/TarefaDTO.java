@@ -16,10 +16,10 @@ public class TarefaDTO {
 	private String descricao;
 	private boolean concluida;
 	
-	private ListaTarefaDTO listaTarefaDTO;
+	private TaskListDTO listaTarefaDTO;
 
 
-	public TarefaDTO(Long id, String nome, String descricao, boolean concluida, ListaTarefaDTO listaTarefa) {
+	public TarefaDTO(Long id, String nome, String descricao, boolean concluida, TaskListDTO listaTarefa) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -32,7 +32,7 @@ public class TarefaDTO {
 		this.nome = entity.getNome();
 		this.descricao = entity.getDescricao();
 		this.concluida = entity.isConcluida();
-		this.listaTarefaDTO = new ListaTarefaDTO(entity.getListaTarefa());
+		this.listaTarefaDTO = new TaskListDTO(entity.getListaTarefa());
 	}
 
 }

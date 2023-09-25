@@ -9,14 +9,14 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ListaTarefaTest {
+public class TaskListTest {
 	
-	private ListaTarefa listaTarefa;
+	private TaskList listaTarefa;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		listaTarefa  = new ListaTarefa();
+		listaTarefa  = new TaskList();
 	}
 	
 	@Test

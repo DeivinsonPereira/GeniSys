@@ -38,7 +38,7 @@ public class Usuario implements Serializable{
 	private Set<Notificacao> mensagem = new HashSet<>();
 	
 	@OneToMany(mappedBy = "usuario")
-	private List<ListaTarefa> listaTarefas = new ArrayList<>();
+	private List<TaskList> listaTarefas = new ArrayList<>();
 	
 	public Usuario(Long id, String nome, Integer idade, String email) {
 		this.id = id;
@@ -51,6 +51,6 @@ public class Usuario implements Serializable{
 	private void setMensagem(List<Notificacao> mensagem) {}
 	
 	@SuppressWarnings("unused")
-	private void setListaTarefas(List<ListaTarefa> listaTarefas) {}
+	private void setListaTarefas(List<TaskList> listaTarefas) {}
 	
 }
