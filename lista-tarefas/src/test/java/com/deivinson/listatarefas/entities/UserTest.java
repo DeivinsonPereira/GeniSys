@@ -7,39 +7,39 @@ import org.junit.jupiter.api.Test;
 
 public class UserTest {
 
-	private User usuario;
+	private User user;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		usuario = new User();
+		user = new User();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		usuario.setId(1L);
-		assertEquals(1L, usuario.getId());
+		user.setId(1L);
+		assertEquals(1L, user.getId());
 	}
 	
 	@Test
-	public void testSetAndGetNome() {
+	public void testSetAndGetName() {
 			
-		usuario.setNome("Bruno");
-		assertEquals("Bruno", usuario.getNome());
+		user.setName("Bruno");
+		assertEquals("Bruno", user.getName());
 	}
 	
 	@Test
-	public void testSetAndGetIdade() {
+	public void testSetAndGetAge() {
 		
-		usuario.setIdade(20);
-		assertEquals(20, usuario.getIdade());
+		user.setAge(20);
+		assertEquals(20, user.getAge());
 	}
 	
 	@Test
 	public void testSetAndGetEmail() {
 		
-		usuario.setEmail("bruno@gmail.com");
-		assertEquals("bruno@gmail.com", usuario.getEmail());
+		user.setEmail("bob@gmail.com");
+		assertEquals("bob@gmail.com", user.getEmail());
 	}
 }

@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_notificacao")
+@Table(name = "tb_notification")
 public class Notification implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -33,19 +33,19 @@ public class Notification implements Serializable{
 	private Long id;
 	
 	@Column(columnDefinition = "TEXT")
-	private String mensagem;
+	private String message;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant dataHora;
-	private boolean exibida;
+	private Instant dateTime;
+	private boolean displayed;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private User usuario;
+	@JoinColumn(name = "user_id")
+	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name = "lista_tarefa_id")
-	private TaskList listaTarefa;
+	@JoinColumn(name = "task_list_id")
+	private TaskList taskList;
 	
 	
 }

@@ -10,97 +10,97 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.TaskList;
 import com.deivinson.listatarefas.entities.Task;
+import com.deivinson.listatarefas.entities.TaskList;
 import com.deivinson.listatarefas.entities.User;
 
 public class TaskDTOTest {
 
-	private TaskDTO tarefaDTO;
+	private TaskDTO taskDTO;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		tarefaDTO = new TaskDTO();
+		taskDTO = new TaskDTO();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		tarefaDTO.setId(1L);
-		assertEquals(1L, tarefaDTO.getId());
+		taskDTO.setId(1L);
+		assertEquals(1L, taskDTO.getId());
 	}
 	
 	@Test
-	public void testSetAndGetNome() {
+	public void testSetAndGetName() {
 			
-		tarefaDTO.setNome("Bruno");
-		assertEquals("Bruno", tarefaDTO.getNome());
+		taskDTO.setName("Bob");
+		assertEquals("Bob", taskDTO.getName());
 	}
 	
 	@Test
-	public void testSetAndGetDescricao() {
+	public void testSetAndGetDescription() {
 		
-		tarefaDTO.setDescricao("Testando o set e get de descricao");
-		assertEquals("Testando o set e get de descricao", tarefaDTO.getDescricao());
+		taskDTO.setDescription("Testing the set and get methods for description.");
+		assertEquals("Testing the set and get methods for description.", taskDTO.getDescription());
 	}
 	
 	@Test
-	public void testEstaConcluida() {
+	public void testEstaCompleted() {
 		
-		tarefaDTO.setConcluida(true);
+		taskDTO.setCompleted(true);
 		
-		assertTrue(tarefaDTO.isConcluida());
+		assertTrue(taskDTO.isCompleted());
 	}
 	
 	@Test
-	public void testSetAndIsConcluida() {
+	public void testSetAndIsCompleted() {
 		
-		tarefaDTO.setConcluida(false);
+		taskDTO.setCompleted(false);
 		
-		assertFalse(tarefaDTO.isConcluida());
+		assertFalse(taskDTO.isCompleted());
 	}
 	
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(),new User(1L, "João", 30, "joão@gmail.com"));
+		TaskList taskList = new TaskList(1L, "Test", Instant.now(),new User(1L, "Joe", 30, "joe@gmail.com"));
 		
-		Task lista = new Task (1L, "Provas","Estudar para prova",false, listaTarefa);
+		Task list = new Task (1L, "Exams","Prepare for the exam.",false, taskList);
 		
-		TaskDTO tarefaDTO = new TaskDTO(lista);
+		TaskDTO taskDTO = new TaskDTO(list);
 		
-		assertEquals(tarefaDTO.getId(), lista.getId());
-		assertEquals(tarefaDTO.getNome(), lista.getNome());
-		assertEquals(tarefaDTO.getDescricao(), lista.getDescricao());
-		assertEquals(tarefaDTO.isConcluida(), lista.isConcluida());
-		assertEquals(tarefaDTO.getListaTarefaDTO().getTitulo(), lista.getListaTarefa().getTitulo());
+		assertEquals(taskDTO.getId(), list.getId());
+		assertEquals(taskDTO.getName(), list.getName());
+		assertEquals(taskDTO.getDescription(), list.getDescription());
+		assertEquals(taskDTO.isCompleted(), list.isCompleted());
+		assertEquals(taskDTO.getTaskListDTO().getTitle(), list.getTaskList().getTitle());
 	}
 	
 	@Test
 	public void ConstructorWithArguments() {
 		
-		TaskListDTO listaTarefaDTO = new TaskListDTO();
+		TaskListDTO taskListDTO = new TaskListDTO();
 		
-		TaskDTO tarefaDTO = new TaskDTO(1L, "Mercado", "Fazer as compras", false, listaTarefaDTO );
+		TaskDTO taskDTO = new TaskDTO(1L, "Market", "Go shopping.", false, taskListDTO );
 		
-		assertNotNull(tarefaDTO);
-		assertTrue(tarefaDTO.getId() == 1L);
+		assertNotNull(taskDTO);
+		assertTrue(taskDTO.getId() == 1L);
 	}
 	
 	@Test
 	public void testSetters() {
 		
-		TaskListDTO listaTarefaDTO = new TaskListDTO();
+		TaskListDTO taskListDTO = new TaskListDTO();
 		
-		TaskDTO tarefaDTO = new TaskDTO();
-		tarefaDTO.setId(1L);
-		tarefaDTO.setNome("Mercado");
-		tarefaDTO.setDescricao("Fazer as compras");
-		tarefaDTO.setConcluida(false);
-		tarefaDTO.setListaTarefaDTO(listaTarefaDTO);
+		TaskDTO taskDTO = new TaskDTO();
+		taskDTO.setId(1L);
+		taskDTO.setName("Market");
+		taskDTO.setDescription("Go shopping.");
+		taskDTO.setCompleted(false);
+		taskDTO.setTaskListDTO(taskListDTO);
 		
-		assertNotNull(tarefaDTO);
-		assertTrue(tarefaDTO.getId() == 1L);
+		assertNotNull(taskDTO);
+		assertTrue(taskDTO.getId() == 1L);
 	}
 }

@@ -23,34 +23,34 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 @Entity
 @NoArgsConstructor
-@Table(name = "tb_usuario")
+@Table(name = "tb_user")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private Integer idade;
+	private String name;
+	private Integer age;
 	private String email;
 	
-	@OneToMany(mappedBy = "usuario")
-	private Set<Notification> mensagem = new HashSet<>();
+	@OneToMany(mappedBy = "user")
+	private Set<Notification> message = new HashSet<>();
 	
-	@OneToMany(mappedBy = "usuario")
-	private List<TaskList> listaTarefas = new ArrayList<>();
+	@OneToMany(mappedBy = "user")
+	private List<TaskList> taskLists = new ArrayList<>();
 	
-	public User(Long id, String nome, Integer idade, String email) {
+	public User(Long id, String name, Integer age, String email) {
 		this.id = id;
-		this.nome = nome;
-		this.idade = idade;
+		this.name = name;
+		this.age = age;
 		this.email = email;
 	}
 
 	@SuppressWarnings("unused")
-	private void setMensagem(List<Notification> mensagem) {}
+	private void setMessage(List<Notification> message) {}
 	
 	@SuppressWarnings("unused")
-	private void setListaTarefas(List<TaskList> listaTarefas) {}
+	private void setTaskList(List<TaskList> taskLists) {}
 	
 }

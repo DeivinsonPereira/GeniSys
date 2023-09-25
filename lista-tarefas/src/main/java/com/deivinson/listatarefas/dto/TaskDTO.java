@@ -12,27 +12,27 @@ import lombok.Setter;
 public class TaskDTO {
 
 	private Long id;
-	private String nome;
-	private String descricao;
-	private boolean concluida;
+	private String name;
+	private String description;
+	private boolean completed;
 	
-	private TaskListDTO listaTarefaDTO;
+	private TaskListDTO taskListDTO;
 
 
-	public TaskDTO(Long id, String nome, String descricao, boolean concluida, TaskListDTO listaTarefa) {
+	public TaskDTO(Long id, String name, String description, boolean completed, TaskListDTO taskList) {
 		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.concluida = concluida;
-		this.listaTarefaDTO = listaTarefa;
+		this.name = name;
+		this.description = description;
+		this.completed = completed;
+		this.taskListDTO = taskList;
 	}
 	
 	public TaskDTO(Task entity) {
 		this.id = entity.getId();
-		this.nome = entity.getNome();
-		this.descricao = entity.getDescricao();
-		this.concluida = entity.isConcluida();
-		this.listaTarefaDTO = new TaskListDTO(entity.getListaTarefa());
+		this.name = entity.getName();
+		this.description = entity.getDescription();
+		this.completed = entity.isCompleted();
+		this.taskListDTO = new TaskListDTO(entity.getTaskList());
 	}
 
 }

@@ -12,18 +12,18 @@ import lombok.Setter;
 public class UserDTO {
 
 	private Long id;
-	private String nome;
+	private String name;
 	private String email;
 	
-	public UserDTO(Long id, String nome, String email) {
+	public UserDTO(Long id, String name, String email) {
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 	}
 	
 	public UserDTO(User entity) {
 		this.id = entity.getId();
-		this.nome = entity.getNome();
+		this.name = entity.getName();
 		this.email = entity.getEmail();
 	}
 

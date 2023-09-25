@@ -11,52 +11,52 @@ import org.junit.jupiter.api.Test;
 
 public class NotificationTest {
 	
-	private Notification notificacao;
+	private Notification notification;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		notificacao = new Notification();
+		notification = new Notification();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		notificacao.setId(1L);
-		assertEquals(1L, notificacao.getId());
+		notification.setId(1L);
+		assertEquals(1L, notification.getId());
 	}
 	
 	@Test
-	public void testSetAndGetMensagem() {
+	public void testSetAndGetMessage() {
 		
-		notificacao.setMensagem("Falta concluir");
-		assertEquals("Falta concluir", notificacao.getMensagem());
+		notification.setMessage("Yet to be completed");
+		assertEquals("Yet to be completed", notification.getMessage());
 	}
 	
 	@Test
-	public void testSetAndGetDataHora() {
+	public void testSetAndGetDateTime() {
 		
-		Instant instanteEsperado = Instant.now();
+		Instant expectedInstant = Instant.now();
 		
-		notificacao.setDataHora(instanteEsperado);
+		notification.setDateTime(expectedInstant);
 		
-		assertEquals(instanteEsperado, notificacao.getDataHora());
+		assertEquals(expectedInstant, notification.getDateTime());
 	}
 	
 	@Test
-	public void testNotificacaoExibida() {
+	public void testNotificacaoDisplayed() {
 		
-		notificacao.setExibida(true);
+		notification.setDisplayed(true);
 		
-		assertTrue(notificacao.isExibida());
+		assertTrue(notification.isDisplayed());
 	}
 	
 	@Test
-	public void testSetAndIsExibida() {
+	public void testSetAndIsDisplayed() {
 		
-		notificacao.setExibida(false);
+		notification.setDisplayed(false);
 		
-		assertFalse(notificacao.isExibida());
+		assertFalse(notification.isDisplayed());
 	}
 	
 }

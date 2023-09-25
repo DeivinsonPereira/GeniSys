@@ -11,53 +11,52 @@ import org.junit.jupiter.api.Test;
 
 public class TaskListTest {
 	
-	private TaskList listaTarefa;
+	private TaskList taskList;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		listaTarefa  = new TaskList();
+		taskList  = new TaskList();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		listaTarefa.setId(1L);
-		assertEquals(1L, listaTarefa.getId());
+		taskList.setId(1L);
+		assertEquals(1L, taskList.getId());
 	}
 	
 	@Test
-	public void testSetAndGetTitulo() {
+	public void testSetAndGetTitle() {
 			
-		listaTarefa.setTitulo("Mercado");
-		assertEquals("Mercado", listaTarefa.getTitulo());
+		taskList.setTitle("Market");
+		assertEquals("Market", taskList.getTitle());
 	}
 
 	@Test
-	public void testSetAndGetVencimento() {
+	public void testSetAndGetExpirationDate() {
 		
-		Instant instanteEsperado = Instant.now();
+		Instant expectedInstant = Instant.now();
 		
-		listaTarefa.setVencimento(instanteEsperado);
+		taskList.setExpirationDate(expectedInstant);
 		
-		assertEquals(instanteEsperado, listaTarefa.getVencimento());
+		assertEquals(expectedInstant, taskList.getExpirationDate());
 	}
 	
 	@Test
-	public void testEstaConcluida() {
+	public void testEstaCompleted() {
 		
-		listaTarefa.setConcluida(true);
+		taskList.setCompleted(true);
 		
-		assertTrue(listaTarefa.isConcluida());
+		assertTrue(taskList.isCompleted());
 	}
 	
 	@Test
-	public void testSetAndIsConcluida() {
+	public void testSetAndIsCompleted() {
 		
-		listaTarefa.setConcluida(false);
+		taskList.setCompleted(false);
 		
-		assertFalse(listaTarefa.isConcluida());
+		assertFalse(taskList.isCompleted());
 	}
-	
 
 }

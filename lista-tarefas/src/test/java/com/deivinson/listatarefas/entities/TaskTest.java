@@ -9,48 +9,48 @@ import org.junit.jupiter.api.Test;
 
 public class TaskTest {
 
-	private Task tarefa;
+	private Task task;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		tarefa = new Task();
+		task = new Task();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		tarefa.setId(1L);
-		assertEquals(1L, tarefa.getId());
+		task.setId(1L);
+		assertEquals(1L, task.getId());
 	}
 	
 	@Test
-	public void testSetAndGetNome() {
+	public void testSetAndGetName() {
 			
-		tarefa.setNome("Mercado");
-		assertEquals("Mercado", tarefa.getNome());
+		task.setName("Market");
+		assertEquals("Market", task.getName());
 	}
 	
 	@Test
-	public void testSetAndGetDescricao() {
+	public void testSetAndGetDescription() {
 		
-		tarefa.setDescricao("Comprar arroz");
-		assertEquals("Comprar arroz", tarefa.getDescricao());
+		task.setDescription("Buy rice");
+		assertEquals("Buy rice", task.getDescription());
 	}
 	
 	@Test
-	public void testEstaConcluida() {
+	public void testIsCompleted() {
 		
-		tarefa.setConcluida(true);
+		task.setCompleted(true);
 		
-		assertTrue(tarefa.isConcluida());
+		assertTrue(task.isCompleted());
 	}
 	
 	@Test
-	public void testSetAndIsConcluida() {
+	public void testSetAndIsCompleted() {
 		
-		tarefa.setConcluida(false);
+		task.setCompleted(false);
 		
-		assertFalse(tarefa.isConcluida());
+		assertFalse(task.isCompleted());
 	}
 }

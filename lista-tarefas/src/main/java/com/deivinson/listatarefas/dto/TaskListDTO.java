@@ -14,29 +14,29 @@ import lombok.Setter;
 public class TaskListDTO {
 
 	private Long id;
-	private String titulo;
-	private Instant dataInclusao;
-	private Instant vencimento;
-	private boolean concluida;
+	private String title;
+	private Instant inclusionDate;
+	private Instant expirationDate;
+	private boolean completed;
 	
-	private UserDTO usuarioDto;
+	private UserDTO userDTO;
 	
-	public TaskListDTO(Long id, String titulo, Instant vencimento, UserDTO usuarioDto) {
+	public TaskListDTO(Long id, String title, Instant expirationDate, UserDTO userDTO) {
 		this.id = id;
-		this.titulo = titulo;
-		this.dataInclusao = Instant.now();
-		this.vencimento = vencimento;
-		this.concluida = false;
-		this.usuarioDto = usuarioDto;
+		this.title = title;
+		this.inclusionDate = Instant.now();
+		this.expirationDate = expirationDate;
+		this.completed = false;
+		this.userDTO = userDTO;
 	}
 	
 	public TaskListDTO(TaskList entity) {
 		this.id = entity.getId();
-		this.titulo = entity.getTitulo();
-		this.dataInclusao = entity.getDataInclusao();
-		this.vencimento = entity.getVencimento();
-		this.concluida = entity.isConcluida();
-		this.usuarioDto = new UserDTO(entity.getUsuario());
+		this.title = entity.getTitle();
+		this.inclusionDate = entity.getInclusionDate();
+		this.expirationDate = entity.getExpirationDate();
+		this.completed = entity.isCompleted();
+		this.userDTO = new UserDTO(entity.getUser());
 		
 	}
 

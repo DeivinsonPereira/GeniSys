@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.deivinson</groupId>
-	<artifactId>lista-tarefas</artifactId>
+	<artifactId>genisys</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lista-tarefas</name>
+	<name>genisys</name>
 	<description>Aplicativo de lista de tarefas</description>
 	<properties>
 		<java.version>17</java.version>

@@ -23,22 +23,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_tarefa")
+@Table(name = "tb_task")
 public class Task implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String name;
 	
 	@Column(columnDefinition = "TEXT")
-	private String descricao;
+	private String description;
 	
-	private boolean concluida;
+	private boolean completed;
 	
 	@ManyToOne
-	@JoinColumn(name = "lista_tarefa_id")
-	private TaskList listaTarefa;
+	@JoinColumn(name = "task_List_id")
+	private TaskList taskList;
 	
 }

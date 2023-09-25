@@ -14,57 +14,57 @@ import com.deivinson.listatarefas.entities.User;
 
 public class TaskListDTOTest {
 
-	private TaskListDTO listaTarefaDTO;
+	private TaskListDTO taskListDTO;
 	
-	private User usuario;
+	private User user;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		listaTarefaDTO = new TaskListDTO();
+		taskListDTO = new TaskListDTO();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		listaTarefaDTO.setId(1L);
-		assertEquals(1L, listaTarefaDTO.getId());
+		taskListDTO.setId(1L);
+		assertEquals(1L, taskListDTO.getId());
 	}
 	
 	@Test
-	public void testSetAndGetDataInclusao() {
+	public void testSetAndGetInclusionDate() {
+		
+		Instant expectedInstant = Instant.now();
+		
+		taskListDTO.setInclusionDate(expectedInstant);
+		
+		assertEquals(expectedInstant, taskListDTO.getInclusionDate());
+	}
+	
+	@Test
+	public void testSetAndGetExpirationDate() {
 		
 		Instant instanteEsperado = Instant.now();
 		
-		listaTarefaDTO.setDataInclusao(instanteEsperado);
+		taskListDTO.setExpirationDate(instanteEsperado);
 		
-		assertEquals(instanteEsperado, listaTarefaDTO.getDataInclusao());
+		assertEquals(instanteEsperado, taskListDTO.getExpirationDate());
 	}
 	
 	@Test
-	public void testSetAndGetVencimento() {
+	public void testEstaCompleted() {
 		
-		Instant instanteEsperado = Instant.now();
+		taskListDTO.setCompleted(true);
 		
-		listaTarefaDTO.setVencimento(instanteEsperado);
-		
-		assertEquals(instanteEsperado, listaTarefaDTO.getVencimento());
+		assertTrue(taskListDTO.isCompleted());
 	}
 	
 	@Test
-	public void testEstaConcluida() {
+	public void testSetAndIsCompleted() {
 		
-		listaTarefaDTO.setConcluida(true);
+		taskListDTO.setCompleted(false);
 		
-		assertTrue(listaTarefaDTO.isConcluida());
-	}
-	
-	@Test
-	public void testSetAndIsConcluida() {
-		
-		listaTarefaDTO.setConcluida(false);
-		
-		assertFalse(listaTarefaDTO.isConcluida());
+		assertFalse(taskListDTO.isCompleted());
 	}
 	
 		
@@ -72,50 +72,50 @@ public class TaskListDTOTest {
 	public void testEntityToDTOConversion() {
 		
 		
-		usuario = new User(1L, "Joelson", 30, "joelson@gmail.com");
+		user = new User(1L, "Joe", 30, "joe@gmail.com");
 		
-		TaskList listaTarefa = new TaskList(1L, "Teste", Instant.now(), usuario);
+		TaskList taskList = new TaskList(1L, "teste", Instant.now(), user);
 		
-		TaskListDTO listatarefaDTO = new TaskListDTO(listaTarefa);
+		TaskListDTO taskListDTO = new TaskListDTO(taskList);
 		
-		assertEquals(listatarefaDTO.getId(), listaTarefa.getId());
-		assertEquals(listatarefaDTO.getTitulo(), listaTarefa.getTitulo());
-		assertEquals(listatarefaDTO.getDataInclusao(), listaTarefa.getDataInclusao());
-		assertEquals(listatarefaDTO.isConcluida(), listaTarefa.isConcluida());
-		assertEquals(listatarefaDTO.getUsuarioDto().getNome(), listaTarefa.getUsuario().getNome());
+		assertEquals(taskListDTO.getId(), taskList.getId());
+		assertEquals(taskListDTO.getTitle(), taskList.getTitle());
+		assertEquals(taskListDTO.getInclusionDate(), taskList.getInclusionDate());
+		assertEquals(taskListDTO.isCompleted(), taskList.isCompleted());
+		assertEquals(taskListDTO.getUserDTO().getName(), taskList.getUser().getName());
 	}
 	
 	@Test
 	public void constructorWithAllArguments() {
 		
-		UserDTO usuarioDTO = new UserDTO();
-		usuarioDTO.setNome("João");
+		UserDTO userDTO = new UserDTO();
+		userDTO.setName("Joe");
 		
-		TaskListDTO listaTarefaDTO = new TaskListDTO(1L, "Mercado",  Instant.now(), usuarioDTO);
+		TaskListDTO taskListDTO = new TaskListDTO(1L, "Market",  Instant.now(), userDTO);
 		
-		assertEquals(1L, listaTarefaDTO.getId());
-		assertEquals("Mercado", listaTarefaDTO.getTitulo());
-		assertEquals(Instant.now(), listaTarefaDTO.getDataInclusao());
-		assertEquals(Instant.now(), listaTarefaDTO.getVencimento());
-		assertFalse(listaTarefaDTO.isConcluida() == true);
-		assertEquals(usuarioDTO.getNome(), listaTarefaDTO.getUsuarioDto().getNome() );
+		assertEquals(1L, taskListDTO.getId());
+		assertEquals("Market", taskListDTO.getTitle());
+		assertEquals(Instant.now(), taskListDTO.getInclusionDate());
+		assertEquals(Instant.now(), taskListDTO.getExpirationDate());
+		assertFalse(taskListDTO.isCompleted() == true);
+		assertEquals(userDTO.getName(), taskListDTO.getUserDTO().getName() );
 		
 	}
 	
 	@Test
 	public void testSetter() {
 		
-		UserDTO usuarioDTO = new UserDTO();
-		usuarioDTO.setNome("João");
+		UserDTO userDTO = new UserDTO();
+		userDTO.setName("Joe");
 		
-		TaskListDTO listaTarefaDTO = new TaskListDTO();
-		listaTarefaDTO.setId(1L);
-		listaTarefaDTO.setTitulo("Mercado");
-		listaTarefaDTO.setUsuarioDto(usuarioDTO);
+		TaskListDTO taskListDTO = new TaskListDTO();
+		taskListDTO.setId(1L);
+		taskListDTO.setTitle("Market");
+		taskListDTO.setUserDTO(userDTO);
 		
-		assertEquals(1L, listaTarefaDTO.getId());
-		assertEquals("Mercado", listaTarefaDTO.getTitulo());
-		assertEquals(usuarioDTO.getNome(), listaTarefaDTO.getUsuarioDto().getNome() );
+		assertEquals(1L, taskListDTO.getId());
+		assertEquals("Market", taskListDTO.getTitle());
+		assertEquals(userDTO.getName(), taskListDTO.getUserDTO().getName() );
 	}
 
 }

@@ -9,55 +9,55 @@ import com.deivinson.listatarefas.entities.User;
 
 public class UserDTOTest {
 
-	private UserDTO usuarioDTO;
+	private UserDTO userDTO;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		usuarioDTO = new UserDTO();
+		userDTO = new UserDTO();
 	}
 	
 	@Test
 	public void testSetAndGetId() {
 		
-		usuarioDTO.setId(1L);
-		assertEquals(1L, usuarioDTO.getId());
+		userDTO.setId(1L);
+		assertEquals(1L, userDTO.getId());
 	}
 	
 	@Test
-	public void testSetAndGetNome() {
+	public void testSetAndGetName() {
 			
-		usuarioDTO.setNome("Bruno");
-		assertEquals("Bruno", usuarioDTO.getNome());
+		userDTO.setName("Bob");
+		assertEquals("Bob", userDTO.getName());
 	}
 	
 	@Test
 	public void testSetAndGetEmail() {
 		
-		usuarioDTO.setEmail("bruno@gmail.com");
-		assertEquals("bruno@gmail.com", usuarioDTO.getEmail());
+		userDTO.setEmail("bob@gmail.com");
+		assertEquals("bob@gmail.com", userDTO.getEmail());
 	}
 	
 	@Test
 	public void testEntityToDTOConversion() {
 		
-		User usuario = new User (1L, "João", 30, "joao@gmail.com");
+		User user = new User (1L, "Joe", 30, "joe@gmail.com");
 		
-		UserDTO usuarioDTO = new UserDTO(usuario);
+		UserDTO userDTO = new UserDTO(user);
 		
-		assertEquals(usuario.getId(), usuarioDTO.getId());
-		assertEquals(usuario.getNome(), usuarioDTO.getNome());
-		assertEquals(usuario.getEmail(), usuarioDTO.getEmail());
+		assertEquals(user.getId(), userDTO.getId());
+		assertEquals(user.getName(), userDTO.getName());
+		assertEquals(user.getEmail(), userDTO.getEmail());
 	}
 	
 	@Test
 	public void ConstructorWithArguments() {
 		
-		UserDTO usuarioDTO = new UserDTO(1L, "João", "joao@gmail.com");
+		UserDTO userDTO = new UserDTO(1L, "Joe", "joe@gmail.com");
 		
-		assertEquals(1L, usuarioDTO.getId());
-		assertEquals("João", usuarioDTO.getNome());
-		assertEquals("joao@gmail.com", usuarioDTO.getEmail());
+		assertEquals(1L, userDTO.getId());
+		assertEquals("Joe", userDTO.getName());
+		assertEquals("joe@gmail.com", userDTO.getEmail());
 	}
 	
 }

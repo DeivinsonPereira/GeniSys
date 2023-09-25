@@ -21,11 +21,11 @@ public class TaskListService {
 	public TaskListDTO insertTask(TaskListDTO dto) {
 		
 		TaskList taskList = new TaskList();
-		taskList.setTitulo(dto.getTitulo());
-		taskList.setVencimento(dto.getVencimento());
-		User usuario = usuarioRepository.findById(dto.getId())
+		taskList.setTitle(dto.getTitle());
+		taskList.setExpirationDate(dto.getExpirationDate());
+		User user = usuarioRepository.findById(dto.getId())
 	            .orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
-		taskList.setUsuario(usuario);
+		taskList.setUser(user);
 
 		repository.save(taskList);
 		

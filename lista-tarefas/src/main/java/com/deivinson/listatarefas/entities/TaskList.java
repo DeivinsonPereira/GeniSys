@@ -28,47 +28,47 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "tb_lista_tarefa")
+@Table(name = "tb_task_list")
 public class TaskList {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String titulo;
+	private String title;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant dataInclusao;
+	private Instant inclusionDate;
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant vencimento;
-	private boolean concluida;
+	private Instant expirationDate;
+	private boolean completed;
 	
-	@OneToMany(mappedBy = "listaTarefa")
-	private Set<Notification> notificacoes = new HashSet<>();
+	@OneToMany(mappedBy = "taskList")
+	private Set<Notification> notifications = new HashSet<>();
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private User usuario;
+	@JoinColumn(name = "user_id")
+	private User user;
 	
-	@OneToMany(mappedBy = "listaTarefa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Task> tarefas = new ArrayList<>();
+	@OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Task> tasks = new ArrayList<>();
 	
-	public TaskList(Long id, String titulo, Instant vencimento, User usuario) {
+	public TaskList(Long id, String title, Instant expirationDate, User user) {
 		this.id = id;
-		this.titulo = titulo;
-		this.dataInclusao = Instant.now();
-		this.vencimento = vencimento;
-		this.concluida = false;
-		this.usuario = usuario;
+		this.title = title;
+		this.inclusionDate = Instant.now();
+		this.expirationDate = expirationDate;
+		this.completed = false;
+		this.user = user;
 	}
 	
 	@SuppressWarnings("unused")
-	private void setMensagem(List<Notification> notificacoes) {}
+	private void setMessage(List<Notification> notifications) {}
 	
 	@SuppressWarnings("unused")
-	private void setListaTarefas(List<Task> tarefas) {}
+	private void setTaskList(List<Task> tasks) {}
 	
 	@SuppressWarnings("unused")
-	private void setDataInclusao(Instant dataInclusao) {}
+	private void setInclusionDate(Instant inclusionDate) {}
 
 }
