@@ -1,8 +1,8 @@
-package com.deivinson.listatarefas.repositories;
+package com.deivinson.genisys.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.deivinson.listatarefas.entities.Task;
+import com.deivinson.genisys.entities.Task;
 
 public interface TaskRepository extends JpaRepository<Task, Long>{
 

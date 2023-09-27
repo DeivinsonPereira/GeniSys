@@ -1,4 +1,4 @@
-package com.deivinson.listatarefas;
+package com.deivinson.genisys;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

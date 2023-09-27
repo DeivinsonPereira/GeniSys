@@ -1,8 +1,8 @@
-package com.deivinson.listatarefas.dto;
+package com.deivinson.genisys.dto;
 
 import java.time.Instant;
 
-import com.deivinson.listatarefas.entities.TaskList;
+import com.deivinson.genisys.entities.TaskList;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

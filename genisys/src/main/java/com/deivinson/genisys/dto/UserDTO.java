@@ -1,6 +1,6 @@
-package com.deivinson.listatarefas.dto;
+package com.deivinson.genisys.dto;
 
-import com.deivinson.listatarefas.entities.User;
+import com.deivinson.genisys.entities.User;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.deivinson.listatarefas.dto;
+package com.deivinson.genisys.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,9 +10,9 @@ import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.Task;
-import com.deivinson.listatarefas.entities.TaskList;
-import com.deivinson.listatarefas.entities.User;
+import com.deivinson.genisys.entities.Task;
+import com.deivinson.genisys.entities.TaskList;
+import com.deivinson.genisys.entities.User;
 
 public class TaskDTOTest {
 

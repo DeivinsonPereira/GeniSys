@@ -1,8 +1,8 @@
-package com.deivinson.listatarefas.repositories;
+package com.deivinson.genisys.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.deivinson.listatarefas.entities.Notification;
+import com.deivinson.genisys.entities.Notification;
 
 public interface NotificationRepository extends JpaRepository<Notification, Long>{
 

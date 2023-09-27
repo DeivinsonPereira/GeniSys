@@ -1,4 +1,4 @@
-package com.deivinson.listatarefas.entities;
+package com.deivinson.genisys.entities;
 
 import java.io.Serializable;
 

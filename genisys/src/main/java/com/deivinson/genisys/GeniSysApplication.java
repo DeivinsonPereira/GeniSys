@@ -1,4 +1,4 @@
-package com.deivinson.listatarefas;
+package com.deivinson.genisys;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.deivinson.listatarefas.entities;
+package com.deivinson.genisys.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

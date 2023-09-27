@@ -1,11 +1,11 @@
-package com.deivinson.listatarefas.dto;
+package com.deivinson.genisys.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.deivinson.listatarefas.entities.User;
+import com.deivinson.genisys.entities.User;
 
 public class UserDTOTest {
 

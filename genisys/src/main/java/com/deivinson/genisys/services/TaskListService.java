@@ -1,14 +1,14 @@
-package com.deivinson.listatarefas.services;
+package com.deivinson.genisys.services;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.deivinson.listatarefas.dto.TaskListDTO;
-import com.deivinson.listatarefas.entities.TaskList;
-import com.deivinson.listatarefas.entities.User;
-import com.deivinson.listatarefas.repositories.TaskListRepository;
-import com.deivinson.listatarefas.repositories.UserRepository;
+import com.deivinson.genisys.dto.TaskListDTO;
+import com.deivinson.genisys.entities.TaskList;
+import com.deivinson.genisys.entities.User;
+import com.deivinson.genisys.repositories.TaskListRepository;
+import com.deivinson.genisys.repositories.UserRepository;
 
 public class TaskListService {
 
