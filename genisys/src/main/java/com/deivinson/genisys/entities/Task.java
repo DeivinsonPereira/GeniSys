@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.deivinson.genisys.entities.enums.Status;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,7 +37,7 @@ public class Task implements Serializable{
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
-	private boolean completed;
+	private Status status;
 	
 	@ManyToOne
 	@JoinColumn(name = "task_List_id")

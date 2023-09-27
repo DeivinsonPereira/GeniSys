@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.deivinson.genisys.entities.enums.Status;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,7 +45,7 @@ public class TaskList implements Serializable{
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant expirationDate;
-	private boolean completed;
+	private Status status;
 	
 	@OneToMany(mappedBy = "taskList")
 	private Set<Notification> notifications = new HashSet<>();
@@ -60,7 +62,7 @@ public class TaskList implements Serializable{
 		this.title = title;
 		this.inclusionDate = Instant.now();
 		this.expirationDate = expirationDate;
-		this.completed = false;
+		this.status = Status.UNFINISHED;
 		this.user = user;
 	}
 	
