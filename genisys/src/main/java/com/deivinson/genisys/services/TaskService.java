@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.deivinson.genisys.dto.TaskDTO;
 import com.deivinson.genisys.entities.Task;
 import com.deivinson.genisys.entities.TaskList;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 import com.deivinson.genisys.repositories.TaskListRepository;
 import com.deivinson.genisys.repositories.TaskRepository;
 
@@ -26,6 +27,7 @@ public class TaskService {
 		
 		Task task = new Task();
 		task.setName(dto.getName());
+		task.setStatus(TaskStatus.UNFINISHED);
 		task.setDescription(dto.getDescription());
 		TaskList taskList = taskListRepository.findById(taskListId)
                 .orElseThrow(() -> new EntityNotFoundException("TaskList not found with id: " + taskListId));

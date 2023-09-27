@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.deivinson.genisys.dto.TaskListDTO;
 import com.deivinson.genisys.entities.TaskList;
 import com.deivinson.genisys.entities.User;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 import com.deivinson.genisys.repositories.TaskListRepository;
 import com.deivinson.genisys.repositories.UserRepository;
 
@@ -26,12 +27,15 @@ public class TaskListService {
 		
 		TaskList taskList = new TaskList();
 		taskList.setTitle(dto.getTitle());
-		taskList.setExpirationDate(dto.getExpirationDate());
+		
+		if (dto.getExpirationDate() != null) {
+	        taskList.setExpirationDate(dto.getExpirationDate());
+	    }
 		
 		User user = usuarioRepository.findById(dto.getUserDTO().getId())
 	            .orElseThrow(() -> new EntityNotFoundException("User not found!"));
 		taskList.setUser(user);
-
+		taskList.setStatus(TaskStatus.UNFINISHED);
 		taskList = repository.save(taskList);
 		
 		return new TaskListDTO(taskList);

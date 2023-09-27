@@ -17,9 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import com.deivinson.genisys.entities.enums.Status;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,7 +46,8 @@ public class TaskList implements Serializable{
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant expirationDate;
-	private Status status;
+	
+	private TaskStatus status;
 	
 	@OneToMany(mappedBy = "taskList")
 	private Set<Notification> notifications = new HashSet<>();
@@ -62,7 +64,6 @@ public class TaskList implements Serializable{
 		this.title = title;
 		this.inclusionDate = Instant.now();
 		this.expirationDate = expirationDate;
-		this.status = Status.UNFINISHED;
 		this.user = user;
 	}
 	
@@ -74,5 +75,11 @@ public class TaskList implements Serializable{
 	
 	@SuppressWarnings("unused")
 	private void setInclusionDate(Instant inclusionDate) {}
+	
+	@PrePersist
+	public void prePersist() {
+		inclusionDate = Instant.now();
+	}
+	
 
 }

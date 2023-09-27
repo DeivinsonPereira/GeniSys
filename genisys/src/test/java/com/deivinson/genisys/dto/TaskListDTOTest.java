@@ -1,8 +1,6 @@
 package com.deivinson.genisys.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 
@@ -51,21 +49,6 @@ public class TaskListDTOTest {
 		assertEquals(instanteEsperado, taskListDTO.getExpirationDate());
 	}
 	
-	@Test
-	public void testEstaCompleted() {
-		
-		taskListDTO.setCompleted(true);
-		
-		assertTrue(taskListDTO.isCompleted());
-	}
-	
-	@Test
-	public void testSetAndIsCompleted() {
-		
-		taskListDTO.setCompleted(false);
-		
-		assertFalse(taskListDTO.isCompleted());
-	}
 	
 		
 	@Test
@@ -81,7 +64,6 @@ public class TaskListDTOTest {
 		assertEquals(taskListDTO.getId(), taskList.getId());
 		assertEquals(taskListDTO.getTitle(), taskList.getTitle());
 		assertEquals(taskListDTO.getInclusionDate(), taskList.getInclusionDate());
-		assertEquals(taskListDTO.isCompleted(), taskList.isCompleted());
 		assertEquals(taskListDTO.getUserDTO().getName(), taskList.getUser().getName());
 	}
 	
@@ -97,7 +79,6 @@ public class TaskListDTOTest {
 		assertEquals("Market", taskListDTO.getTitle());
 		assertEquals(Instant.now(), taskListDTO.getInclusionDate());
 		assertEquals(Instant.now(), taskListDTO.getExpirationDate());
-		assertFalse(taskListDTO.isCompleted() == true);
 		assertEquals(userDTO.getName(), taskListDTO.getUserDTO().getName() );
 		
 	}

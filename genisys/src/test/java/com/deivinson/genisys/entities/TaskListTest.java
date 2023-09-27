@@ -1,8 +1,6 @@
 package com.deivinson.genisys.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 
@@ -43,20 +41,4 @@ public class TaskListTest {
 		assertEquals(expectedInstant, taskList.getExpirationDate());
 	}
 	
-	@Test
-	public void testEstaCompleted() {
-		
-		taskList.setCompleted(true);
-		
-		assertTrue(taskList.isCompleted());
-	}
-	
-	@Test
-	public void testSetAndIsCompleted() {
-		
-		taskList.setCompleted(false);
-		
-		assertFalse(taskList.isCompleted());
-	}
-
 }

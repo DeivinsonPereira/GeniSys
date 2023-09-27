@@ -3,7 +3,7 @@ package com.deivinson.genisys.dto;
 import java.time.Instant;
 
 import com.deivinson.genisys.entities.TaskList;
-import com.deivinson.genisys.entities.enums.Status;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class TaskListDTO {
 	private String title;
 	private Instant inclusionDate;
 	private Instant expirationDate;
-	private Status status;
+	private TaskStatus status;
 	
 	private UserDTO userDTO;
 	
@@ -27,7 +27,7 @@ public class TaskListDTO {
 		this.title = title;
 		this.inclusionDate = Instant.now();
 		this.expirationDate = expirationDate;
-		this.status = Status.UNFINISHED;
+		this.status = TaskStatus.UNFINISHED;
 		this.userDTO = userDTO;
 	}
 	
@@ -36,7 +36,7 @@ public class TaskListDTO {
 		this.title = entity.getTitle();
 		this.inclusionDate = Instant.now();
 		this.expirationDate = entity.getExpirationDate();
-		this.status = Status.UNFINISHED;
+		this.status = TaskStatus.UNFINISHED;
 		this.userDTO = new UserDTO(entity.getUser());
 		
 	}

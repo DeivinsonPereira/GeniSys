@@ -1,7 +1,7 @@
 package com.deivinson.genisys.dto;
 
 import com.deivinson.genisys.entities.Task;
-import com.deivinson.genisys.entities.enums.Status;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,8 @@ public class TaskDTO {
 	private Long id;
 	private String name;
 	private String description;
-	private Status status;
+	
+	private TaskStatus status;
 	private TaskListDTO taskListDTO;
 
 
@@ -23,7 +24,7 @@ public class TaskDTO {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.status = Status.UNFINISHED;
+		this.status = TaskStatus.UNFINISHED;
 		this.taskListDTO = taskList;
 	}
 	
@@ -31,7 +32,7 @@ public class TaskDTO {
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.description = entity.getDescription();
-		this.status = Status.UNFINISHED;
+		this.status = TaskStatus.UNFINISHED;
 		this.taskListDTO = new TaskListDTO(entity.getTaskList());
 	}
 

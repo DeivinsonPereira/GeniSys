@@ -1,7 +1,6 @@
 package com.deivinson.genisys.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import com.deivinson.genisys.entities.Task;
 import com.deivinson.genisys.entities.TaskList;
 import com.deivinson.genisys.entities.User;
+import com.deivinson.genisys.entities.enums.TaskStatus;
 
 public class TaskDTOTest {
 
@@ -45,35 +45,19 @@ public class TaskDTOTest {
 		assertEquals("Testing the set and get methods for description.", taskDTO.getDescription());
 	}
 	
-	@Test
-	public void testEstaCompleted() {
-		
-		taskDTO.setCompleted(true);
-		
-		assertTrue(taskDTO.isCompleted());
-	}
-	
-	@Test
-	public void testSetAndIsCompleted() {
-		
-		taskDTO.setCompleted(false);
-		
-		assertFalse(taskDTO.isCompleted());
-	}
 	
 	@Test
 	public void testEntityToDTOConversion() {
 		
 		TaskList taskList = new TaskList(1L, "Test", Instant.now(),new User(1L, "Joe", 30, "joe@gmail.com"));
 		
-		Task list = new Task (1L, "Exams","Prepare for the exam.",false, taskList);
+		Task list = new Task (1L, "Exams","Prepare for the exam.",TaskStatus.UNFINISHED, taskList);
 		
 		TaskDTO taskDTO = new TaskDTO(list);
 		
 		assertEquals(taskDTO.getId(), list.getId());
 		assertEquals(taskDTO.getName(), list.getName());
 		assertEquals(taskDTO.getDescription(), list.getDescription());
-		assertEquals(taskDTO.isCompleted(), list.isCompleted());
 		assertEquals(taskDTO.getTaskListDTO().getTitle(), list.getTaskList().getTitle());
 	}
 	
@@ -82,7 +66,7 @@ public class TaskDTOTest {
 		
 		TaskListDTO taskListDTO = new TaskListDTO();
 		
-		TaskDTO taskDTO = new TaskDTO(1L, "Market", "Go shopping.", false, taskListDTO );
+		TaskDTO taskDTO = new TaskDTO(1L, "Market", "Go shopping.", taskListDTO );
 		
 		assertNotNull(taskDTO);
 		assertTrue(taskDTO.getId() == 1L);
@@ -97,7 +81,6 @@ public class TaskDTOTest {
 		taskDTO.setId(1L);
 		taskDTO.setName("Market");
 		taskDTO.setDescription("Go shopping.");
-		taskDTO.setCompleted(false);
 		taskDTO.setTaskListDTO(taskListDTO);
 		
 		assertNotNull(taskDTO);
