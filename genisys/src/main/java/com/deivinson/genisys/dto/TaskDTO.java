@@ -23,7 +23,7 @@ public class TaskDTO {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.completed = completed;
+		this.completed = false;
 		this.taskListDTO = taskList;
 	}
 	
@@ -31,7 +31,7 @@ public class TaskDTO {
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.description = entity.getDescription();
-		this.completed = entity.isCompleted();
+		this.completed = false;
 		this.taskListDTO = new TaskListDTO(entity.getTaskList());
 	}
 

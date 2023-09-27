@@ -33,9 +33,9 @@ public class TaskListDTO {
 	public TaskListDTO(TaskList entity) {
 		this.id = entity.getId();
 		this.title = entity.getTitle();
-		this.inclusionDate = entity.getInclusionDate();
+		this.inclusionDate = Instant.now();
 		this.expirationDate = entity.getExpirationDate();
-		this.completed = entity.isCompleted();
+		this.completed = false;
 		this.userDTO = new UserDTO(entity.getUser());
 		
 	}
