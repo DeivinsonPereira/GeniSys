@@ -20,11 +20,11 @@ public class TaskDTO {
 	private TaskListDTO taskListDTO;
 
 
-	public TaskDTO(Long id, String name, String description, TaskListDTO taskList) {
+	public TaskDTO(Long id, String name, TaskStatus status, String description, TaskListDTO taskList) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.status = TaskStatus.UNFINISHED;
+		this.status = status;
 		this.taskListDTO = taskList;
 	}
 	
@@ -32,7 +32,7 @@ public class TaskDTO {
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.description = entity.getDescription();
-		this.status = TaskStatus.UNFINISHED;
+		this.status = entity.getStatus();
 		this.taskListDTO = new TaskListDTO(entity.getTaskList());
 	}
 

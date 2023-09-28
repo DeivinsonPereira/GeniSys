@@ -41,6 +41,20 @@ public class TaskListService {
 		return new TaskListDTO(taskList);
 	}
 	
+	@Transactional
+    public TaskListDTO changeStatusTaskList(Long taskListId) {
+        TaskList taskList = repository.findById(taskListId)
+                .orElseThrow(() -> new EntityNotFoundException("TaskList not found!"));
+        if(taskList.getStatus() == TaskStatus.UNFINISHED) {
+        	taskList.setStatus(TaskStatus.COMPLETED);
+        	taskList = repository.save(taskList);
+        }else {
+        	taskList.setStatus(TaskStatus.UNFINISHED);
+        	taskList = repository.save(taskList);
+        }
+        return new TaskListDTO(taskList);
+    }
+	
 	
 	
 }

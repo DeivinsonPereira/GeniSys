@@ -38,4 +38,19 @@ public class TaskService {
 		
 		return new TaskDTO(task);
 	}
+	
+	@Transactional
+    public TaskDTO changeStatusTask(Long taskId) {
+        Task task = repository.findById(taskId)
+                .orElseThrow(() -> new EntityNotFoundException("Task not found!"));
+        if(task.getStatus() == TaskStatus.UNFINISHED) {
+        	task.setStatus(TaskStatus.COMPLETED);
+        	task = repository.save(task);
+        }else {
+        	task.setStatus(TaskStatus.UNFINISHED);
+        	task = repository.save(task);
+        }
+        return new TaskDTO(task);
+    }
+	
 }

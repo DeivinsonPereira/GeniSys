@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,4 +42,19 @@ public class TaskListController {
 				.buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
+	
+	@PutMapping(value = "/{taskListId}/tasks/{taskId}")
+    public ResponseEntity<TaskDTO> changeStatusTask(@PathVariable Long taskListId, @PathVariable Long taskId) {
+		
+        TaskDTO taskDTO = taskService.changeStatusTask(taskId);
+        return ResponseEntity.ok(taskDTO);
+    }
+	
+	@PutMapping(value = "/{taskListId}")
+    public ResponseEntity<TaskListDTO> changeStatusTaskList(@PathVariable Long taskListId) {
+		
+		TaskListDTO taskListDTO = service.changeStatusTaskList(taskListId);
+        return ResponseEntity.ok(taskListDTO);
+    }
+
 }

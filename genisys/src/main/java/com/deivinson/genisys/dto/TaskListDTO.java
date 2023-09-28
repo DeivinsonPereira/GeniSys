@@ -22,12 +22,12 @@ public class TaskListDTO {
 	
 	private UserDTO userDTO;
 	
-	public TaskListDTO(Long id, String title, Instant expirationDate, UserDTO userDTO) {
+	public TaskListDTO(Long id, String title, TaskStatus status, Instant expirationDate, UserDTO userDTO) {
 		this.id = id;
 		this.title = title;
 		this.inclusionDate = Instant.now();
 		this.expirationDate = expirationDate;
-		this.status = TaskStatus.UNFINISHED;
+		this.status = status;
 		this.userDTO = userDTO;
 	}
 	
@@ -36,7 +36,7 @@ public class TaskListDTO {
 		this.title = entity.getTitle();
 		this.inclusionDate = Instant.now();
 		this.expirationDate = entity.getExpirationDate();
-		this.status = TaskStatus.UNFINISHED;
+		this.status = entity.getStatus();
 		this.userDTO = new UserDTO(entity.getUser());
 		
 	}
