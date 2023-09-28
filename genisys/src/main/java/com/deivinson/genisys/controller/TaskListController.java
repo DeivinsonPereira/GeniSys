@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -56,5 +57,17 @@ public class TaskListController {
 		TaskListDTO taskListDTO = service.changeStatusTaskList(taskListId);
         return ResponseEntity.ok(taskListDTO);
     }
-
+	
+	@PutMapping(value = "/{taskListId}/update")
+    public ResponseEntity<TaskListDTO> updateTaskList(@PathVariable Long taskListId, @RequestBody TaskListDTO dto) {
+		
+		TaskListDTO taskListDTO = service.updateTaskList(taskListId, dto);
+        return ResponseEntity.ok(taskListDTO);
+    }
+	
+	@DeleteMapping(value = "/{taskListId}")
+    public ResponseEntity<Void> deleteTaskList(@PathVariable Long taskListId) {
+        service.deleteTaskList(taskListId);
+        return ResponseEntity.noContent().build();
+    }
 }

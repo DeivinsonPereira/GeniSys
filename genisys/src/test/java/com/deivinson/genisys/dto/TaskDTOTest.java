@@ -66,7 +66,7 @@ public class TaskDTOTest {
 		
 		TaskListDTO taskListDTO = new TaskListDTO();
 		
-		TaskDTO taskDTO = new TaskDTO(1L, "Market", "Go shopping.", taskListDTO );
+		TaskDTO taskDTO = new TaskDTO(1L, "Market", null,"Go shopping.", taskListDTO );
 		
 		assertNotNull(taskDTO);
 		assertTrue(taskDTO.getId() == 1L);

@@ -73,7 +73,7 @@ public class TaskListDTOTest {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setName("Joe");
 		
-		TaskListDTO taskListDTO = new TaskListDTO(1L, "Market",  Instant.now(), userDTO);
+		TaskListDTO taskListDTO = new TaskListDTO(1L, "Market", null, Instant.now(), userDTO);
 		
 		assertEquals(1L, taskListDTO.getId());
 		assertEquals("Market", taskListDTO.getTitle());

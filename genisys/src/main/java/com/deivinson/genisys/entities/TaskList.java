@@ -56,7 +56,7 @@ public class TaskList implements Serializable{
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Task> tasks = new ArrayList<>();
 	
 	public TaskList(Long id, String title, Instant expirationDate, User user) {
